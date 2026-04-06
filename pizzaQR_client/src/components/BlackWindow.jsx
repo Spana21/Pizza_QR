@@ -153,7 +153,7 @@ function DiplomkaModal({ isOpen, onClose }) {
           
           <p className="github-info" style={{ marginTop: '30px' }}>
             Projekt je plně transparentní a zdrojový kód je dostupný na 
-            <a href="https://github.com/Spana21/PlatBrana_phi" target="_blank" rel="noopener noreferrer" className="github-link"> GitHubu</a>.
+            <a href="https://github.com/Spana21/Pizza_QR" target="_blank" rel="noopener noreferrer" className="github-link"> GitHubu</a>.
           </p>
         </div>
       </div>
