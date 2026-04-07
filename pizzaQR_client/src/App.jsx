@@ -5,7 +5,7 @@ import DiplomkaModal from './components/BlackWindow.jsx';
 const WORKER_URL = "https://anton-databaze.spaniklukas.workers.dev";
 
 export default function PizzeriaCheckout() {
-  // --- PŘIDANÉ CHYBĚJÍCÍ PROMĚNNÉ ---
+
   const [showModal, setShowModal] = useState(false);
   
   const currentPath = window.location.pathname.replace('/', '');
@@ -95,7 +95,7 @@ export default function PizzeriaCheckout() {
     }
 
     // POKUD VŠE PROŠLO:
-    setError(''); // Pro jistotu vymažeme jakoukoliv starou chybu
+    setError(''); 
  
     fetch(`${WORKER_URL}/track-login-click?school=${schoolId}`).catch(console.error);
     fetch(`${WORKER_URL}/track-modal-view?school=${schoolId}`).catch(console.error);
@@ -130,7 +130,7 @@ export default function PizzeriaCheckout() {
 
         {/* --- INFORMAČNÍ BANNER O AKCI --- */}
         <div className="promo-banner">
-          <strong>🎉 Speciální akce za 25 Kč!</strong>
+          <strong>Speciální akce za 25 Kč!</strong>
           <p>Tento kupón platí výhradně na pizzu <b>Margherita</b> nebo <b>Prosciutto</b>. Uplatnění kupónu je možné <b>pouze osobně na naší prodejně</b>.</p>
         </div>
 
@@ -169,7 +169,6 @@ export default function PizzeriaCheckout() {
               <label>Číslo karty</label>
               <div className="card-input-wrapper">
                 <div className="card-icon-slot cards">
-                  {/* TADY JSOU PŘIPRAVENÉ TVÉ OBRÁZKY */}
                   {cardType === 'visa' && <img src="/VisaLogo.svg" alt="VISA" className="card-logo-img dimmed" />}
                   {cardType === 'mastercard' && <img src="/MasterCardLogo.svg" alt="MasterCard" className="card-logo-img dimmed" />}
                 </div>
