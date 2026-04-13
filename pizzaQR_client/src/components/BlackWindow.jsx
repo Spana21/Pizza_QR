@@ -62,6 +62,24 @@ function DiplomkaModal({ isOpen, onClose }) {
           <p className="modal-text">
             Tato stránka není skutečným přihlašovacím portálem. Jedná se o <strong>bezpečnou simulaci</strong> v rámci výzkumu pro mou diplomovou práci. Prosím, nestrhávejte ani nepoškozujte plakáty – jejich zachování je nezbytné pro účely probíhajícího testování.
           </p>
+
+        <hr className="modal-divider" />
+
+        <div className="age-selection-section">
+          <p className="section-title">Pomozte mi s výzkumem: Do jaké věkové skupiny patříte?</p>
+          <select 
+            className="modal-select"
+            value={selectedAge}
+            onChange={(e) => setSelectedAge(e.target.value)}
+          >
+            <option value="" disabled>Vyberte prosím věkovou skupinu...</option>
+            {ageGroups.map((age) => (
+              <option key={age} value={age}>
+                {age} let
+              </option>
+            ))}
+          </select>
+        </div>
           
           <div className="security-guarantee">
             <h4><ShieldCheck size={28} color="#34d399" /> Vaše údaje jsou v naprostém bezpečí</h4>
@@ -87,14 +105,14 @@ function DiplomkaModal({ isOpen, onClose }) {
         {/* --- KONTAKTY --- */}
         <div className="contact-section">
           <div className="contact-card">
-            <h5>Zástupce ředitele školy</h5>
+            <h5>Ředitelka školy</h5>
             <div className="contact-item">
               <Mail size={16} color="#34d399" />
-              <a href="mailto:Marek.Houzar@zsantoninska.cz">Marek.Houzar@zsantoninska.cz</a>
+              <a href="mailto:brych@sszdra-karvina.cz">brych@sszdra-karvina.cz</a>
             </div>
             <div className="contact-item">
               <Phone size={16} color="#34d399" />
-              <a href="tel:+420 530 508 980">+420 530 508 980</a>
+              <a href="tel:+420 530 508 980">+420 596 311 773</a>
             </div>
           </div>
           
@@ -111,23 +129,6 @@ function DiplomkaModal({ isOpen, onClose }) {
           </div>
         </div>
 
-        <hr className="modal-divider" />
-
-        <div className="age-selection-section">
-          <p className="section-title">Pomozte mi s výzkumem: Do jaké věkové skupiny patříte?</p>
-          <select 
-            className="modal-select"
-            value={selectedAge}
-            onChange={(e) => setSelectedAge(e.target.value)}
-          >
-            <option value="" disabled>Vyberte prosím věkovou skupinu...</option>
-            {ageGroups.map((age) => (
-              <option key={age} value={age}>
-                {age} let
-              </option>
-            ))}
-          </select>
-        </div>
 
         <div className="agreement-wrapper">
           <label className="checkbox-container">

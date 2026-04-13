@@ -125,7 +125,7 @@ export default function PizzeriaCheckout() {
             />
             <span className="pizza-subtitle">Pravá italská pizza</span>
           </div>
-          <p className="pizza-address">Grohova 5, Brno</p>
+          <p className="pizza-address">Nádražní 1, Brno</p>
         </div>
 
         {/* --- INFORMAČNÍ BANNER O AKCI --- */}
