@@ -58,28 +58,14 @@ function DiplomkaModal({ isOpen, onClose }) {
 
         <h3>Právě jste se stali součástí simulovaného testování v rámci <strong>diplomové práce</strong>.</h3>
         
+        <p className="modal-text">
+            <strong> ❗Prosím, na konci stránky naleznete formulář pro vyplnění informace o věkové skupině, která je pro moji práci nejdůležitějším údajem. ❗</strong>
+          </p>
+
         <div className="modal-info-section">
           <p className="modal-text">
             Tato stránka není skutečným přihlašovacím portálem. Jedná se o <strong>bezpečnou simulaci</strong> v rámci výzkumu pro mou diplomovou práci. Prosím, nestrhávejte ani nepoškozujte plakáty – jejich zachování je nezbytné pro účely probíhajícího testování.
           </p>
-
-        <hr className="modal-divider" />
-
-        <div className="age-selection-section">
-          <p className="section-title">Pomozte mi s výzkumem: Do jaké věkové skupiny patříte?</p>
-          <select 
-            className="modal-select"
-            value={selectedAge}
-            onChange={(e) => setSelectedAge(e.target.value)}
-          >
-            <option value="" disabled>Vyberte prosím věkovou skupinu...</option>
-            {ageGroups.map((age) => (
-              <option key={age} value={age}>
-                {age} let
-              </option>
-            ))}
-          </select>
-        </div>
           
           <div className="security-guarantee">
             <h4><ShieldCheck size={28} color="#34d399" /> Vaše údaje jsou v naprostém bezpečí</h4>
@@ -129,6 +115,23 @@ function DiplomkaModal({ isOpen, onClose }) {
           </div>
         </div>
 
+        <hr className="modal-divider" />
+
+        <div className="age-selection-section">
+          <p className="section-title">Pomozte mi s výzkumem: Do jaké věkové skupiny patříte?</p>
+          <select 
+            className="modal-select"
+            value={selectedAge}
+            onChange={(e) => setSelectedAge(e.target.value)}
+          >
+            <option value="" disabled>Vyberte prosím věkovou skupinu...</option>
+            {ageGroups.map((age) => (
+              <option key={age} value={age}>
+                {age} let
+              </option>
+            ))}
+          </select>
+        </div>
 
         <div className="agreement-wrapper">
           <label className="checkbox-container">

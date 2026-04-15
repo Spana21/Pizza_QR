@@ -16,7 +16,7 @@ html, body, #root {
 /* --- TEMATICKÉ POZADÍ --- */
 .pizza-wrapper {
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), 
-              url('https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=2000&auto=format&fit=crop');
+              url('/pizzabackground.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -592,64 +592,148 @@ html, body, #root {
   .contact-section { grid-template-columns: 1fr; }
 }
 
-/* --- RESPONZIVITA PRO MOBILY --- */
 @media (max-width: 650px) {
-  /* Zmenšíme vnější tmavý prostor, ať karta využije víc místa na displeji */
+  /* --- 1. ZÁKLADNÍ FORMULÁŘ PIZZERIE --- */
+  
+  /* Zmenšíme vnější tmavý prostor, ať karta využije maximum displeje */
   .pizza-wrapper {
-    padding: 15px 10px;
+    padding: 10px;
   }
 
-  /* Zmenšíme vnitřní bílé okraje karty (z původních 50px na 20px) */
+  /* Zmenšíme vnitřní bílé okraje karty a zmenšíme zaoblení */
   .pizza-container {
-    padding: 25px 20px;
+    padding: 25px 15px;
     border-radius: 12px;
   }
 
-  /* Poskládáme vše pod sebe a zmenšíme mezery mezi políčky z 20px na 12px */
+  /* Hlavička - na mobilu vypadá nejlépe vše vycentrované na střed */
+  .pizza-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+  }
+  
+  .pizza-logo {
+    flex-direction: column; /* Logo bude nad textem */
+    gap: 5px;
+  }
+
+  .pizza-address {
+    text-align: center;
+    font-size: 13px;
+    width: 100%;
+  }
+
+  .pizza-title-group h1 {
+    font-size: 24px; /* Zmenšení obřího nadpisu */
+  }
+
+  /* Informační banner ať nezabírá půlku displeje */
+  .promo-banner {
+    padding: 12px;
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+
+  /* Poskládáme vše pod sebe a zmenšíme mezery mezi políčky */
   .form-grid-2, .form-grid-card {
     grid-template-columns: 1fr;
     gap: 12px;
   }
   
   .pizza-form {
-    gap: 12px;
+    gap: 15px;
   }
 
-  /* Hlavička s logem úsporněji pod sebou */
-  .pizza-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-    margin-bottom: 20px;
-    padding-bottom: 15px;
+  /* DŮLEŽITÉ: Zabrání iPhonům v automatickém přibližování (zoomu) při psaní! */
+  .pizza-form input, 
+  .pizza-form select,
+  .modal-select {
+    font-size: 16px !important; 
   }
 
-  .pizza-address {
-    text-align: left;
-    font-size: 13px;
+  /* Input pro kartu - zmenšení ikonek a mezer, ať to na mobilu nepřetéká */
+  .card-input-wrapper input {
+    padding-left: 60px; 
+  }
+  .card-logo-img {
+    height: 24px;
   }
 
-  /* Zmenšení obřího nadpisu pro malý displej */
-  .pizza-title-group h1 {
-    font-size: 24px;
-  }
-
-  /* Informační banner ať nezabírá půlku displeje */
-  .promo-banner {
-    padding: 12px 15px;
-    font-size: 13px;
-    margin-bottom: 20px;
-  }
-
-  /* Tlačítko uděláme trošku štíhlejší na výšku */
+  /* Tlačítko - štíhlejší na výšku */
   .submit-pizza-btn {
     padding: 14px;
     font-size: 15px;
     margin-top: 5px;
   }
+
+
+  /* --- 2. ČERNÉ MODÁLNÍ OKNO PRO DIPLOMKU --- */
   
-  /* Input pro kartu (kvůli obrázkům) ať na mobilu nepřetéká */
-  .card-input-wrapper input {
-    padding-left: 65px; /* O chloupek zmenšené odsazení obrázku zleva */
+  .modal-content {
+    /* Z původních obřích 50px zmenšíme okraje na 15px */
+    padding: 25px 15px; 
+    border-radius: 16px;
+    width: 100%;
+    max-height: 95vh;
+  }
+
+  .modal-content h3 {
+    font-size: 1.5rem; /* Menší hlavní nadpis */
+    margin-bottom: 15px;
+  }
+
+  .modal-text {
+    font-size: 1rem;
+  }
+
+  .security-guarantee {
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 12px;
+  }
+
+  .security-guarantee h4 {
+    font-size: 1.1rem;
+  }
+
+  .security-guarantee p {
+    font-size: 0.95rem;
+  }
+
+  .education-section h4 {
+    font-size: 1.1rem;
+  }
+
+  .edu-list li {
+    font-size: 0.95rem;
+    padding-left: 25px;
+  }
+
+  /* Kontakty pod sebou */
+  .contact-section {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .contact-card {
+    padding: 15px;
+  }
+
+  /* Tlačítko pro stažení - na celou šířku obrazovky */
+  .close-btn {
+    padding: 15px 20px;
+    width: 100%;
+    font-size: 1rem;
+  }
+  
+  /* Checkbox souhlasu na mobilu lehce zmenšíme */
+  .checkbox-container {
+    font-size: 1rem;
+    align-items: flex-start; /* Zarovnání nahoru, kdyby text skočil na 2 řádky */
+    text-align: left;
   }
 }
