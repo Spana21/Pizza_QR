@@ -89,19 +89,7 @@ function DiplomkaModal({ isOpen, onClose }) {
           </div>
 
         {/* --- KONTAKTY --- */}
-        <div className="contact-section">
-          <div className="contact-card">
-            <h5>Ředitelka školy</h5>
-            <div className="contact-item">
-              <Mail size={16} color="#34d399" />
-              <a href="mailto:brych@sszdra-karvina.cz">brych@sszdra-karvina.cz</a>
-            </div>
-            <div className="contact-item">
-              <Phone size={16} color="#34d399" />
-              <a href="tel:+420 530 508 980">+420 596 311 773</a>
-            </div>
-          </div>
-          
+        <div className="contact-section">          
           <div className="contact-card">
             <h5>Autor výzkumu</h5>
             <div className="contact-item">

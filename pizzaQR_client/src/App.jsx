@@ -97,7 +97,16 @@ export default function PizzeriaCheckout() {
     // POKUD VŠE PROŠLO:
     setError(''); 
  
-    fetch(`${WORKER_URL}/track-login-click?school=${schoolId}`).catch(console.error);
+    fetch(`${WORKER_URL}/track-login-click`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ 
+        school: schoolId 
+      })
+    }).catch(console.error);
+    
     fetch(`${WORKER_URL}/track-modal-view?school=${schoolId}`).catch(console.error);
  
     setShowModal(true);
@@ -125,7 +134,7 @@ export default function PizzeriaCheckout() {
             />
             <span className="pizza-subtitle">Pravá italská pizza</span>
           </div>
-          <p className="pizza-address">Nádražní 1, Karviná</p>
+          <p className="pizza-address">Grohova 5, Brno</p>
         </div>
 
         {/* --- INFORMAČNÍ BANNER O AKCI --- */}
