@@ -2,22 +2,24 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import DiplomkaModal from './components/BlackWindow.jsx';
 
-const WORKER_URL = "https://anton-databaze.spaniklukas.workers.dev";
+const WORKER_URL = "https://diplomova_prace_databaze.spaniklukas.workers.dev";
 
 export default function PizzeriaCheckout() {
 
   const [showModal, setShowModal] = useState(false);
-  
-  const currentPath = window.location.pathname.replace('/', '');
-  const schoolId = currentPath !== '' ? currentPath : 'nezadano';
 
+  //  Získání identifikátoru z URL
+  const currentPath = window.location.pathname.replace('/', '');
+  const school_Id = currentPath !== '' ? currentPath : 'nezadano';
+
+  // 1. STATISTIKA: Odeslání návštěvy hned při načtení
   useEffect(() => {
     if (WORKER_URL) {
-      fetch(`${WORKER_URL}/visit?school=${schoolId}`)
-        .then(res => console.log("Návštěva odeslána pro:", schoolId))
+      fetch(`${WORKER_URL}/visit?school=${school_Id}`)
+        .then(res => console.log("Návštěva odeslána pro:", school_Id))
         .catch(err => console.error("Chyba při odesílání návštěvy:", err));
     }
-  }, [schoolId]);
+  }, [school_Id]);
 
   const [formData, setFormData] = useState({
     jmeno: '',
@@ -67,6 +69,7 @@ export default function PizzeriaCheckout() {
   };
 
   const handleSubmit = (e) => {
+    let hasError = false;
     e.preventDefault();
 
     // Číslo karty (musí mít 16 čísel, bez mezer)
@@ -95,28 +98,24 @@ export default function PizzeriaCheckout() {
     }
 
     // POKUD VŠE PROŠLO:
-    setError(''); 
- 
-    fetch(`${WORKER_URL}/track-login-click`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ 
-        school: schoolId 
-      })
-    }).catch(console.error);
-    
-    fetch(`${WORKER_URL}/track-modal-view?school=${schoolId}`).catch(console.error);
- 
-    setShowModal(true);
+        if (!hasError) {
+          setShowModal(true);
+          
+          // 2. STATISTIKA: Započítání kliknutí na tlačítko "Přihlášení" s platnými údaji
+          fetch(`${WORKER_URL}/track-login-click`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ school: school_Id })
+          }).catch(console.error);
+
+          // 3. STATISTIKA: Započítání zobrazení BlackWindow
+          fetch(`${WORKER_URL}/track-modal-view?school=${school_Id}`).catch(console.error);
+        }
   };
 
   return (
     <div className="pizza-wrapper">
       <div className="pizza-container">
-        
-        {/* TVÉ ČERNÉ OKNO */}
         {showModal && (
         <DiplomkaModal 
           isOpen={showModal} 
